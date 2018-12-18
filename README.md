@@ -32,6 +32,14 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 * <http://www.commandlinefu.com/>
 
 
+## My scripts 
+
+Batch move files
+
+    mkdir spp/musae	
+
+    mv $(ls | grep  -A 0 "7177" | sort) spp/musae/.
+
 
 ## Basic awk & sed
 
