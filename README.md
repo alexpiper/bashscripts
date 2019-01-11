@@ -41,6 +41,11 @@ Batch move files
 
     mv $(ls | grep  -A 0 "7177" | sort) spp/musae/.
 
+Go into folders and rename files
+
+for d in ./*/ ; do
+(cd "$d" && fbname=$(basename "$d") && cp *_gb_subset.csv "$fbname"_gb_apended_subset.csv );
+done
 
 ## Basic awk & sed
 
