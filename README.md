@@ -50,8 +50,8 @@ done
 
 Batch Rename
 
-    for i in cc*; do
-     mv "$i" "${i/_13/_15}"
+    for i in *; do
+     mv "$i" "${i/7907a/2545d}"
     done
 
 
