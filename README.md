@@ -47,6 +47,14 @@ for d in ./*/ ; do
 (cd "$d" && fbname=$(basename "$d") && cp *_gb_subset.csv "$fbname"_gb_apended_subset.csv );
 done
 
+
+Batch Rename
+
+    for i in cc*; do
+     mv "$i" "${i/_13/_15}"
+    done
+
+
 ## Basic awk & sed
 
 [[back to top](#contents)]
