@@ -35,6 +35,26 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 
 ## My scripts 
 
+Extract rpm packages contents
+
+    export ins=foo-bar.rpm   
+    rpm2cpio $ins | cpio -idv
+    
+How to extract tar.gz archive
+
+    gzip -dc foo-bar.tar.gz | tar xvf –
+    cd foo-bar-dir
+    
+How to extract tar.gz packages to the current directory
+
+    export file=foo-bar.tar.gz
+    # Note that `xovf` switch order *matters*
+    gzip -dc $file | tar -xovf -
+    
+How to build binaries as a non-root
+    
+    ./configure --prefix=$HOME && make && make install
+
 Batch move files
 
     mkdir spp/musae	
