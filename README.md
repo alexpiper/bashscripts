@@ -35,7 +35,7 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 
 ## My scripts 
 
-Summarise unused indexes from undetermined reads fastq file
+Summarise unused indexes from undetermined reads fastq file - Using this then sorting through the file for the index switch combinations is directly comparable to demultiplexing with all combinations
 
       zcat Undetermined_S0_R1_001.fastq.gz | grep '^@M03633' | cut -d : -f 10 | sort | uniq -c | sort -nr > indices.txt
 
