@@ -35,6 +35,10 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 
 ## My scripts 
 
+Summarise unused indexes from undetermined reads fastq file
+
+      zcat Undetermined_S0_R1_001.fastq.gz | grep '^@M03633' | cut -d : -f 10 | sort | uniq -c | sort -nr > indices.txt
+
 Get basic sequence statistics for a folder of fastq.gz files. Print file name, total number of reads, total number unique reads, percentage of unique reads, most abundant sequence, its frequency, and percentage of total in file.fq:
    
     rm readcount.txt
