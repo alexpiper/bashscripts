@@ -35,6 +35,14 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 
 ## My scripts 
 
+rename fasta file headers to filename
+
+      for i in *; do
+            echo $i
+            name=`echo "$i" | cut -d'.' -f1`
+            awk '/^>/ {gsub(/.fa(sta)?$/,"",FILENAME);printf(">%s\n",FILENAME);next;} {print}' $i > $name.mito.fa
+      done
+
 Summarise unused indexes from undetermined reads fastq file - Using this then sorting through the file for the index switch combinations is directly comparable to demultiplexing with all combinations using 0 mismatch
 
       zcat Undetermined_S0_R1_001.fastq.gz | grep '^@M03633' | cut -d : -f 10 | sort | uniq -c | sort -nr > indices.txt
