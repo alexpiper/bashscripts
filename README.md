@@ -1,4 +1,4 @@
-# Bioinformatics one-liners
+# Bioinformatics one-liners and general utilties
 
 [![DOI](https://zenodo.org/badge/3882/stephenturner/oneliners.svg)](https://zenodo.org/badge/latestdoi/3882/stephenturner/oneliners)
 
@@ -90,9 +90,9 @@ Batch move files
 
 Go into folders and rename files
 
-for d in ./*/ ; do
-(cd "$d" && fbname=$(basename "$d") && cp *_gb_subset.csv "$fbname"_gb_apended_subset.csv );
-done
+	for d in ./*/ ; do
+	(cd "$d" && fbname=$(basename "$d") && cp *_gb_subset.csv "$fbname"_gb_apended_subset.csv );
+	done
 
 
 Batch Rename
@@ -100,6 +100,19 @@ Batch Rename
     for i in *; do
      mv "$i" "${i/7907a/2545d}"
     done
+
+Subsample fastqs using bbtools reformat
+
+	  for i in *R1_001.fastq.gz; do
+			Fin=`echo "$i"`
+			Rin=`echo "${i/_R1_/_R2_}"`
+			Fout=`echo ${Fin/_001/_001_subsampled}`
+			Rout=`echo ${Rin/_001/_001_subsampled}`
+			/usr/local/bin/bbmap/reformat.sh \
+			in1=$Fin in2=$Rin \
+			out1=$Fout out2=$Rout \
+			reads=-1 samplereadstarget=10000 ow=t
+	  done
 
 
 ## Basic awk & sed
