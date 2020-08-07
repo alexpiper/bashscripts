@@ -114,6 +114,13 @@ Subsample fastqs using bbtools reformat
 			reads=-1 samplereadstarget=10000 ow=t
 	  done
 
+Batch remove except a certain file
+
+	shopt -s extglob
+	for d in ./Sample*/ ; do
+	(cd "$d" && rm !(*001.fastq.gz));
+	done
+	shopt -u extglob
 
 ## Basic awk & sed
 
