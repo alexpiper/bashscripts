@@ -35,6 +35,23 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 
 ## My scripts 
 
+Count reads in a set of fastq files
+
+	# Find fastq files to count
+	find $(/usr/bin/ls -d $(pwd)/Sample*) -name *${Sample}*_R1_001.fastq.gz -type f | sort | uniq > to_count.txt
+
+	# Loop across fastq files
+	rm read_counts.txt
+	touch read_counts.txt
+	for R1 in $(cat to_count.txt ) ;do 
+		echo ${R1}
+		sample=$(basename ${R1} )
+		echo ${sample}
+		# Count reads
+		counter=$(zcat ${R1}| grep @A | wc -l)
+		echo $sample $counter >> read_counts.txt
+	done
+
 rename fasta file headers to filename
 
       for i in *; do
